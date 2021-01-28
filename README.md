@@ -1,2 +1,7 @@
 # bootcamp-project-starter
-Project Starter for Bootcamp
+
+Simple Project Starter for Bootcamp
+
+### Original Author
+
+* efriandika.pratama@bni.co.id

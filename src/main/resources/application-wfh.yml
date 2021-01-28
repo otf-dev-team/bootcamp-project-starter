@@ -1,1 +1,3 @@
-
+spring:
+    datasource:
+        url: jdbc:postgresql://efriandika.com:5432/bc_case_study
