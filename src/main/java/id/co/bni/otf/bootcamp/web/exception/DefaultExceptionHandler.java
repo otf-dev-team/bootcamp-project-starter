@@ -34,7 +34,7 @@ import java.util.*;
  */
 @ControllerAdvice
 @Order
-public abstract class DefaultExceptionHandler extends ResponseEntityExceptionHandler {
+public class DefaultExceptionHandler extends ResponseEntityExceptionHandler {
 
     private final Logger log = LoggerFactory.getLogger(DefaultExceptionHandler.class);
 
@@ -107,6 +107,23 @@ public abstract class DefaultExceptionHandler extends ResponseEntityExceptionHan
     public ResponseEntity<Object> handleResourceNotFoundException(final Exception ex, final WebRequest request) {
         log.info("Resources Not Found [User = {}]", getLoggedInUser(request));
         ExceptionResponse exceptionResponse = new ExceptionResponse(HttpStatus.NOT_FOUND, ex.getLocalizedMessage());
+        return new ResponseEntity<>(exceptionResponse, new HttpHeaders(), exceptionResponse.getStatus());
+    }
+
+    /**
+     * Default Data Not Unique Handler
+     * HTTP Status: 422
+     *
+     * @param ex Default starter data not found exception
+     * @param request Spring MVC Request
+     * @return Formatted Response Body
+     */
+    @ExceptionHandler({
+            DataNotUniqueException.class
+    })
+    public ResponseEntity<Object> handleResourceNotUniqueException(final Exception ex, final WebRequest request) {
+        log.info("Resources Not Unique [User = {}]", getLoggedInUser(request));
+        ExceptionResponse exceptionResponse = new ExceptionResponse(HttpStatus.UNPROCESSABLE_ENTITY, ex.getLocalizedMessage());
         return new ResponseEntity<>(exceptionResponse, new HttpHeaders(), exceptionResponse.getStatus());
     }
 

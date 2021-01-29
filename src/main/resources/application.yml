@@ -10,6 +10,9 @@ spring:
         open-in-view: false
         database-platform: org.hibernate.dialect.PostgreSQLDialect
         generate-ddl: true # for development only
+        properties:
+            hibernate:
+                default_schema: public
 
 springdoc:
     api-docs:

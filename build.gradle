@@ -24,11 +24,9 @@ sourceCompatibility = '1.8'
 repositories {
 
     // OTF Nexus
-    /* Temporary disabled
-    maven {
-        url 'http://192.168.236.130:81/repository/maven-public/'
-    }
-    */
+    //    maven {
+    //        url 'http://192.168.236.130:81/repository/maven-public/'
+    //    }
 
     mavenCentral()
 }
@@ -51,12 +49,21 @@ dependencies {
 
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 
-    // 3rd Party
+    // 3rd Party - Query DSL
+    implementation 'com.querydsl:querydsl-core:4.2.2'
+    implementation 'com.querydsl:querydsl-jpa:4.2.2'
+
+    annotationProcessor 'com.querydsl:querydsl-apt:4.2.2:jpa'
+    annotationProcessor 'org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.2.Final'
+
+    // 3rd Party - MapStruct
     implementation 'org.mapstruct:mapstruct:1.4.1.Final'
-    implementation 'org.springdoc:springdoc-openapi-ui:1.5.3'
-    implementation 'org.springdoc:springdoc-openapi-data-rest:1.5.3'
 
     annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.1.Final'
+
+    // 3rd Party - SpringDoc
+    implementation 'org.springdoc:springdoc-openapi-ui:1.5.3'
+    implementation 'org.springdoc:springdoc-openapi-data-rest:1.5.3'
 }
 
 // Enable Unit Testing
